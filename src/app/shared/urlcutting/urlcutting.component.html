@@ -1,0 +1,49 @@
+<section class="mt-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <form
+          style="border: 1px solid black; border-radius: 10px"
+          class="form w-auto fadeInDown"
+          [formGroup]="urlForm"
+          #form="ngForm"
+          (ngSubmit)="onCut(form)"
+        >
+          <legend class="lead text-center">
+            <i class="bi bi-link"></i>Shorten URLs
+          </legend>
+
+          <div class="md-form">
+            <input
+              class="form-control"
+              type="url"
+              formControlName="url"
+              placeholder="Paste long url and shorten it!"
+              required
+            />
+          </div>
+          <p class="text-muted mt-2 text-monospace" style="font-size: 12px;">
+            Note: Please enter a valid URL
+          </p>
+          <div class="row">
+            <div class="col-12 text-center">
+              <input
+                type="submit"
+                value="Shorten"
+                class="btn btn-info btn-rounded my-3 btn-block"
+                style="width: 100px; border-radius: 10px"
+              />
+            </div>
+          </div>
+        </form>
+        <div
+          class="alert alert-info text-center mt-3"
+          role="alert"
+          *ngIf="urlCutting"
+        >
+          <a target="_blank" [href]="urlCutting">{{ urlCutting }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
